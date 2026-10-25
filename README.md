@@ -3,6 +3,8 @@
 Одностраничник, который выглядит и ведёт себя как **BIOS Setup Utility**: POST-экран с тестом памяти,
 синие экраны настроек, рамки, CRT-развёртка и навигация с клавиатуры.
 
+**Живая версия:** https://leighiaccino856-beep.github.io/bios-portfolio/
+
 Контент собран по публичному профилю
 [**leighiaccino856-beep**](https://github.com/leighiaccino856-beep) и его репозиторию
 [tg-conv](https://github.com/leighiaccino856-beep/tg-conv) на 25.10.2026.
@@ -18,6 +20,25 @@ npm run build     # production-сборка в dist/
 npm run preview   # посмотреть собранную версию
 npm test          # vitest + jsdom
 ```
+
+Локальная сборка под подпуть GitHub Pages (если нужно проверить прод-пути):
+
+```bash
+MSYS_NO_PATHCONV=1 VITE_BASE=/bios-portfolio/ npm run build
+```
+
+## Деплой
+
+Сайт хостится бесплатно на **GitHub Pages**: репозиторий
+[leighiaccino856-beep/bios-portfolio](https://github.com/leighiaccino856-beep/bios-portfolio),
+ветка `main` — источник Pages (build type: workflow).
+
+Workflow `.github/workflows/deploy.yml` на каждый push в `main` собирает Vite с
+`VITE_BASE=/bios-portfolio/` и публикует `dist` через `actions/deploy-pages`.
+Первый запуск можно сделать вручную: Actions → «Deploy to GitHub Pages» → Run workflow.
+
+Свой домен: Settings → Pages → Custom domain, затем DNS-запись CNAME на
+`leighiaccino856-beep.github.io`; HTTPS включается автоматически.
 
 ## Управление
 
